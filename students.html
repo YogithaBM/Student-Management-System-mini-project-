@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="students-body">
+    <main class="students-page">
+      <section class="students-panel" aria-labelledby="page-title">
+        <header class="students-header">
+          <div>
+            <p class="eyebrow">Student Management System</p>
+            <h1 id="page-title">Student Registration</h1>
+            <p class="page-note">Register a new student or edit an existing record.</p>
+          </div>
+          <button id="clear-form" class="secondary-button" type="button">New Student</button>
+        </header>
+
+        <form id="student-form" class="student-form" novalidate>
+          <input type="hidden" id="editing-index" value="" />
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="student-id">Student ID</label>
+              <input id="student-id" name="studentId" type="text" placeholder="STU001" required />
+              <small class="error-message" data-error-for="student-id"></small>
+            </div>
+
+            <div class="field">
+              <label for="student-name">Student Name</label>
+              <input id="student-name" name="studentName" type="text" placeholder="Enter full name" required />
+              <small class="error-message" data-error-for="student-name"></small>
+            </div>
+
+            <div class="field">
+              <label for="student-email">Email</label>
+              <input id="student-email" name="email" type="email" placeholder="name@example.com" required />
+              <small class="error-message" data-error-for="student-email"></small>
+            </div>
+
+            <div class="field">
+              <label for="student-mobile">Mobile Number</label>
+              <input id="student-mobile" name="mobile" type="tel" inputmode="numeric" maxlength="10" placeholder="10 digits" required />
+              <small class="error-message" data-error-for="student-mobile"></small>
+            </div>
+
+            <fieldset class="field fieldset-field">
+              <legend>Gender</legend>
+              <div class="choice-row">
+                <label><input type="radio" name="gender" value="Male" required /> Male</label>
+                <label><input type="radio" name="gender" value="Female" /> Female</label>
+                <label><input type="radio" name="gender" value="Other" /> Other</label>
+              </div>
+              <small class="error-message" data-error-for="gender"></small>
+            </fieldset>
+
+            <div class="field">
+              <label for="student-dob">Date of Birth</label>
+              <input id="student-dob" name="dob" type="date" required />
+              <small class="error-message" data-error-for="student-dob"></small>
+            </div>
+
+            <div class="field">
+              <label for="student-course">Course</label>
+              <select id="student-course" name="course" required>
+                <option value="">Select course</option>
+                <option value="Java">Java</option>
+                <option value="Python">Python</option>
+                <option value="MERN">MERN</option>
+                <option value="Data Science">Data Science</option>
+              </select>
+              <small class="error-message" data-error-for="student-course"></small>
+            </div>
+
+            <div class="field field-wide">
+              <label for="student-address">Address</label>
+              <textarea id="student-address" name="address" rows="3" placeholder="Enter full address" required></textarea>
+              <small class="error-message" data-error-for="student-address"></small>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="primary-button" id="save-button">Save Student</button>
+            <button type="reset" class="secondary-button" id="reset-button">Reset</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="students-panel" aria-labelledby="table-title">
+        <header class="students-header">
+          <div>
+            <p class="eyebrow">Registered Students</p>
+            <h2 id="table-title">Student List</h2>
+          </div>
+        </header>
+
+        <div class="search-bar">
+          <label for="student-search">Search students</label>
+          <input id="student-search" type="search" placeholder="Search by ID, name, or email" />
+        </div>
+
+        <div class="table-wrap">
+          <table class="students-table">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="students-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="students.js"></script>
+  </body>
+</html>
